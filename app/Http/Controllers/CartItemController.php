@@ -32,7 +32,7 @@ class CartItemController extends Controller
     
         $cart->items()->save($cartItem);
     
-        return response()->json(['message' => 'Product added to cart successfully']);
+        return response()->json(['message' => 'Product added to cart successfully'], 201);
     }
     
 
@@ -41,7 +41,7 @@ class CartItemController extends Controller
         $cartItem = CartItem::find($request->item_id);
         $cartItem->delete();
 
-        return response()->json(['message' => 'Product removed from cart successfully']);
+        return response()->json(['message' => 'Product removed from cart successfully'], 200);
     }
 }
     
