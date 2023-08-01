@@ -32,7 +32,7 @@ class ProfileController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return response()->json(['message' => 'User created successfully'], 201);
+        return response()->json(['message' => 'Utilizatorul a fost creat cu succes.'], 201);
     }
 
     public function update(Request $request, $id)
@@ -40,7 +40,7 @@ class ProfileController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'Utilizatorul nu a fost gasit.'], 404);
         }
 
         $validator = Validator::make($request->all(), [
@@ -56,7 +56,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->save();
 
-        return response()->json(['message' => 'Profile updated successfully'], 200);
+        return response()->json(['message' => 'Profilul a fost actualizat cu succes'], 200);
     }
 
     public function destroy($id)
@@ -64,11 +64,11 @@ class ProfileController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            return response()->json(['message' => 'User not found'], 404);
+            return response()->json(['message' => 'Utilizatorul nu a fost gasit.'], 404);
         }
 
         $user->delete();
 
-        return response()->json(['message' => 'User deleted successfully'], 200);
+        return response()->json(['message' => 'Utilizatorul a fost șters cu succes.'], 200);
     }
 }

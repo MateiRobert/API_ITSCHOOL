@@ -15,7 +15,7 @@ class CartController extends Controller
     $cart = Cart::where('user_id', $request->user_id)->with('items.product')->first();
 
     if (!$cart) {
-        return response()->json(['message' => 'Cart not found for the given user'], 404);
+        return response()->json(['message' => 'Cosul nu a fost găsit pentru utilizatorul specificat'], 404);
     }
 
     return response()->json($cart);

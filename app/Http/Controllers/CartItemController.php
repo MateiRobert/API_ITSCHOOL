@@ -15,7 +15,7 @@ class CartItemController extends Controller
         $product = Product::find($request->product_id);
     
         if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
+            return response()->json(['message' => 'Produsul nu a fost găsit.'], 404);
         }
     
         $cartItem = new CartItem;
@@ -32,7 +32,7 @@ class CartItemController extends Controller
     
         $cart->items()->save($cartItem);
     
-        return response()->json(['message' => 'Product added to cart successfully'], 201);
+        return response()->json(['message' => 'Produsul a fost adăugat cu succes în coșul de cumpărături.'], 201);
     }
     
 
@@ -41,7 +41,7 @@ class CartItemController extends Controller
         $cartItem = CartItem::find($request->item_id);
         $cartItem->delete();
 
-        return response()->json(['message' => 'Product removed from cart successfully'], 200);
+        return response()->json(['message' => 'Produsul a fost înlăturat cu succes din coș.'], 200);
     }
 }
     
